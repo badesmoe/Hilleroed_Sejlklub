@@ -6,6 +6,12 @@
         Member,
         Admin
     }
+    public enum MemberType
+    {
+        Junior,
+        Senior,
+        Familie
+    }
     public class User
     {
         private static int _nextId = 1;
@@ -16,6 +22,7 @@
         public string Email { get; set; }
         public int Phone { get; set; }
         public RoleType Role { get; private set; }
+        public MemberType MemberType { get; private set; }
         #endregion
 
         #region Constructor
