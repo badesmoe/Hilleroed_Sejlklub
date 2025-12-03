@@ -20,6 +20,9 @@
         public double Width { get; set; }
         public double Draft { get; set; }
 
+        public List<Maintenance> MaintenanceLog { get; }
+        public List<DamageReport> DamageReports { get; }
+
         // Construction
         public int BuildYear { get; set; }
         #endregion
