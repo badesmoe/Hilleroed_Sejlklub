@@ -1,3 +1,5 @@
+using Hillerød_Sejlklub.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -24,3 +26,5 @@ app.MapRazorPages()
    .WithStaticAssets();
 
 app.Run();
+
+User user1 = new User("John Doe", "simon@bade.dk", 26444849);
