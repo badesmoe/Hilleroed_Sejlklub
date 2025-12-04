@@ -13,7 +13,8 @@ namespace Hillerød_Sejlklub.Models
         public DateTime EndTime { get; set; }
         public bool StartInvestigation { get; set; }
         public int BoatId { get; set; }
-        public Boat Boat { get; }
+        public Boat? Boat { get; }
+        public User? User { get; }
 
 
         public Booking(User user, Boat boat, DateTime startTime, DateTime endTime, string destination)
@@ -28,8 +29,6 @@ namespace Hillerød_Sejlklub.Models
             EndTime = endTime;
             boat.IsBooked = true;
             StartInvestigation = false;
-
-
         }
 
         public override string ToString()
