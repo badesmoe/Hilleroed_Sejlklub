@@ -12,15 +12,23 @@ namespace Hillerød_Sejlklub.Models
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
         public bool StartInvestigation { get; set; }
+        public int BoatId { get; set; }
+        public Boat Boat { get; }
+
 
         public Booking(User user, Boat boat, DateTime startTime, DateTime endTime, string destination)
+       
         {
             Id = _nextId;
             _nextId++;
+            Boat = boat;
+            BoatId = boat.Id;
             Destination = destination;
             StartTime = startTime;
             EndTime = endTime;
+            boat.IsBooked = true;
             StartInvestigation = false;
+
 
         }
 

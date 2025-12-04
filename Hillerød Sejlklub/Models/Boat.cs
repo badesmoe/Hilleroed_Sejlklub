@@ -27,6 +27,9 @@ namespace Hillerød_Sejlklub.Models
 
         // Construction
         public int BuildYear { get; set; }
+
+        // Booking Status
+        public bool IsBooked { get; set; }
         #endregion
 
         #region Constructor
@@ -48,6 +51,8 @@ namespace Hillerød_Sejlklub.Models
             Draft = draft;
 
             BuildYear = buildYear;
+
+            IsBooked = false;
 
         }
         #endregion

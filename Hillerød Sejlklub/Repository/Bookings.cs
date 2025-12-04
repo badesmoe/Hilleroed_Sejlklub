@@ -17,7 +17,9 @@ namespace Hillerød_Sejlklub.Repository
             {
                 if (BookingsList[i].Id == id)
                 {
+                    BookingsList[i].Boat.IsBooked = false;
                     BookingsList.RemoveAt(i);
+                    
                     return;
                 }
             }
