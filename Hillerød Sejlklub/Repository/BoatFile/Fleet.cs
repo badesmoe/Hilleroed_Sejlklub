@@ -1,17 +1,17 @@
 ﻿using Hillerød_Sejlklub.Models;
 
-namespace Hillerød_Sejlklub.Repository
+namespace Hillerød_Sejlklub.Repository.BoatFile
 {
-    public class Fleet
+    public class Fleet: IRepositoryBoat
     {
         private List<Boat> fleet = new List<Boat>();
 
-        public void AddUser(Boat boat)
+        public void Add(Boat boat)
         {
             fleet.Add(boat);
         }
 
-        public void DeleteBoat(int id)
+        public void Delete(int id)
         {
             for (int i = 0; i < fleet.Count; i++)
             {
