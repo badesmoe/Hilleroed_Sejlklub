@@ -12,7 +12,7 @@ namespace Hillerød_Sejlklub.Pages.Bookings
         public bool StartInvestigation { get; set; }
         public int BoatId { get; set; }
         public Boat? Boat { get; }
-        public User? User { get; }
+        //public User? User { get; }
 
         public List<Booking> Fleet { get; private set; } = new List<Booking> 
         {

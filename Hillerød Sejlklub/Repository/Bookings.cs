@@ -12,7 +12,7 @@ namespace Hillerød_Sejlklub.Repository
         {
             foreach (Booking booking in BookingsList)
             {
-                if (booking.Boat.Id == boat.Id)
+                if (booking.Boat?.Id == boat.Id)
                 {
                     if (startTime >= booking.StartTime && startTime <= booking.EndTime)
                     {
