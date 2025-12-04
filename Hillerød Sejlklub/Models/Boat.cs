@@ -22,7 +22,7 @@ namespace Hillerød_Sejlklub.Models
         public double Width { get; set; }
         public double Draft { get; set; }
 
-        public List<MaintenanceLogFile> MaintenanceLog { get; }
+        public List<MaintenanceLogFile> MaintenanceLog { get; } 
         public List<DamageReportFile> DamageReports { get; }
 
         // Construction
