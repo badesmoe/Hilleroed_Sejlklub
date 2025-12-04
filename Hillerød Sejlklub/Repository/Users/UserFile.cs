@@ -1,20 +1,20 @@
 ﻿using Hillerød_Sejlklub.Models;
 
-namespace Hillerød_Sejlklub.Repository;
+namespace Hillerød_Sejlklub.Repository.Users;
 
-public class UserFile
+public class UserFile: IReposioryUser
 {
     private List<User> users = new List <User>()
     {
         new User("John Doe", "John@Doe.com", 29545843, RoleType.Admin),
     };
     
-    public void AddUser(User user)
+    public void Add(User user)
     {
         users.Add(user);
     } 
 
-    public void DeleteUser(int id)
+    public void Delete(int id)
     {
         for (int i = 0; i < users.Count; i++)
         {
@@ -35,7 +35,7 @@ public class UserFile
 
         // Forsøger at konvertere searchTerm til et heltal
         // Hvis det lykkes, antages der at blive søgt på telefonnummer
-        if (Int32.TryParse(searchTerm, out phoneNumber))
+        if (int.TryParse(searchTerm, out phoneNumber))
         {
             foreach (User user in users)
             {
