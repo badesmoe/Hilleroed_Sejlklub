@@ -11,35 +11,27 @@ namespace Hillerød_Sejlklub.Models
         public string Destination { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
-        public bool IsActive { get; set; }
+        public bool StartInvestigation { get; set; }
 
-        public Booking(int id, string destination, DateTime startTime, DateTime endTime, bool isActive)
+        public Booking(User user, Boat boat, DateTime startTime, DateTime endTime, string destination)
         {
-            Id = id;
+            Id = _nextId;
+            _nextId++;
             Destination = destination;
             StartTime = startTime;
             EndTime = endTime;
-            IsActive = isActive;
-        }
+            StartInvestigation = false;
 
-        public bool EndBooking()
-        {
-            if (!IsActive)
-                return false;
-
-            IsActive = false;
-            EndTime = DateTime.Now;
-            return true;
         }
 
         public override string ToString()
         {
             return
-                $"Booking ID: {Id}\n" +
+                $"Booking ID: {Id}\n" + 
                 $"Destination: {Destination}\n" +
                 $"Start time: {StartTime}\n" +
                 $"End time: {EndTime}\n" +
-                $"Booking status: {IsActive}\n";
+                $"Investigation status: {StartInvestigation}\n";
         }
 
 
