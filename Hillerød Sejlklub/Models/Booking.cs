@@ -14,10 +14,22 @@ namespace Hillerød_Sejlklub.Models
         public bool StartInvestigation { get; set; }
         public int BoatId { get; set; }
         public Boat Boat { get; }
+        public bool InvalidBooking
+        {
+            get
+            {
+                
+                if (EndTime <= StartTime || StartTime < DateTime.Now)
+                    return true;
+                
+                else
+                    return false;
+
+            }
+        }
 
 
         public Booking(User user, Boat boat, DateTime startTime, DateTime endTime, string destination)
-       
         {
             Id = _nextId;
             _nextId++;
@@ -28,10 +40,9 @@ namespace Hillerød_Sejlklub.Models
             EndTime = endTime;
             boat.IsBooked = true;
             StartInvestigation = false;
-
-
         }
 
+       
         public override string ToString()
         {
             return
