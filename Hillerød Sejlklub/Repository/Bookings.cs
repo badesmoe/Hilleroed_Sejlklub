@@ -24,7 +24,6 @@ namespace Hillerød_Sejlklub.Repository
                     return;
                 }
             }
-            ;
         }
         public Booking? SearchBookings(int id)
         {
