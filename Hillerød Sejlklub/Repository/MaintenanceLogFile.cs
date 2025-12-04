@@ -2,6 +2,6 @@
 {
     public class MaintenanceLogFile
     {
-        public List<string> Maintenance { get; set; }
+        public List<string> Maintenance = new List<string>();
     }
 }

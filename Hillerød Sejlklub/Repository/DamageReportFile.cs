@@ -2,6 +2,6 @@
 {
     public class DamageReportFile
     {
-        public List<string> DamageReports { get; }
+        public List<string> DamageReports = new List<string>();
     }
 }

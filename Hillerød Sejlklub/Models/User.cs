@@ -1,4 +1,6 @@
-﻿namespace Hillerød_Sejlklub.Models
+﻿using Hillerød_Sejlklub.Repository;
+
+namespace Hillerød_Sejlklub.Models
 {
 
     public enum RoleType
