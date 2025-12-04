@@ -22,6 +22,10 @@ namespace Hillerød_Sejlklub.Repository.BoatFile
                 }
             }
         }
+        public List<Boat> GetFleet()
+        {
+            return fleet;
+        }
         public Boat? Search(int id)
         {
             foreach (Boat boat in fleet)
