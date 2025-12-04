@@ -1,9 +1,12 @@
+using Hillerød_Sejlklub.MockData;
 using Hillerød_Sejlklub.Models;
+using Hillerød_Sejlklub.Repository.Users;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddSingleton<IReposioryUser, MockUsers>();
 
 var app = builder.Build();
 
