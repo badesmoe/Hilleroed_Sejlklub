@@ -27,6 +27,8 @@ namespace Hillerød_Sejlklub.Models
 
             }
         }
+        public Boat? Boat { get; }
+        public User? User { get; }
 
 
         public Booking(User user, Boat boat, DateTime startTime, DateTime endTime, string destination)

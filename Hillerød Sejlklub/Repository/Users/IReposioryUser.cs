@@ -6,6 +6,7 @@ namespace Hillerød_Sejlklub.Repository.Users
     {
         void Add(User user);
         User? Search(string searchTerm);
+        List<User> GetUsers();
         void Delete(int id);
     }
 }

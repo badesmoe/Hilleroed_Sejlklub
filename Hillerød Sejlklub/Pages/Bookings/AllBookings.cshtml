@@ -1,0 +1,63 @@
+﻿@page
+@model Hillerød_Sejlklub.Pages.Bookings.AllBookingsModel
+@{
+}
+<h1>Bookninger</h1>
+<table class="table table-bordered table-hover table-striped">
+    <thead>
+        <tr>
+            <th>
+                Bruger
+            </th>
+            <th>
+                Båd
+            </th>
+            <th>
+                Sejlnummer
+            </th>
+            <th>
+                Destination
+            </th>
+            <th>
+                Starttid
+            </th>
+            <th>
+                Sluttid
+            </th>
+            <th>
+                Start eftersøgning
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Fleet != null)
+        {
+            foreach (var item in Model.Fleet)
+            {
+                <tr>
+                    <td>
+                        @item.User
+                    </td>
+                    <td>
+                        @item.Boat
+                    </td>
+                    <td>
+                        @item.BoatId
+                    </td>
+                    <td>
+                        @item.Destination
+                    </td>
+                    <td>
+                        @item.StartTime
+                    </td>
+                    <td>
+                        @item.EndTime
+                    </td>
+                    <td>
+                        @item.StartInvestigation
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
