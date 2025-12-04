@@ -12,7 +12,7 @@ public class UserFile
     public void AddUser(User user)
     {
         users.Add(user);
-    }
+    } 
 
     public void DeleteUser(int id)
     {
