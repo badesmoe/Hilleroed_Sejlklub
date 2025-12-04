@@ -15,7 +15,7 @@ namespace Hillerød_Sejlklub.Pages.Bookings
         public User? User { get; }
 
         public List<Booking> Fleet { get; private set; } = new List<Booking> 
-        { 
+        {
         };
         public void OnGet()
         {

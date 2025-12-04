@@ -22,6 +22,7 @@ namespace Hillerød_Sejlklub.Pages.Boats
         public double Length { get; set; }
         public double Width { get; set; }
         public double Draft { get; set; }
+        public Boat? boat { get; }
 
         public List<Boat> Fleet { get; private set; }
 
