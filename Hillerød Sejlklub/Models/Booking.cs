@@ -5,6 +5,7 @@ using System.Xml.Linq;
 namespace Hillerød_Sejlklub.Models
 {
     public class Booking
+    #region Properties
     {
         private static int _nextId;
         public int Id { get; private set; }
@@ -20,7 +21,7 @@ namespace Hillerød_Sejlklub.Models
             get
             {
                 
-                if (EndTime <= StartTime || StartTime < DateTime.Now)
+                if (EndTime <= StartTime || StartTime <= DateTime.Now)
                     return true;
                 
                 else
@@ -28,7 +29,9 @@ namespace Hillerød_Sejlklub.Models
 
             }
         }
+        #endregion
 
+    #region Constructor
         public Booking(User user, Boat boat, DateTime startTime, DateTime endTime, string destination)
         {
             Id = _nextId;
@@ -41,8 +44,9 @@ namespace Hillerød_Sejlklub.Models
             boat.IsBooked = true;
             StartInvestigation = false;
         }
+        #endregion
 
-       
+    #region Methods
         public override string ToString()
         {
             return
@@ -55,7 +59,7 @@ namespace Hillerød_Sejlklub.Models
 
 
     }
-
+        #endregion
 
 
 }
