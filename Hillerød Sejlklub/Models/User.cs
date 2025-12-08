@@ -23,6 +23,7 @@ namespace Hillerød_Sejlklub.Models
         public string Name { get; set; }
         public string Email { get; set; }
         public int Phone { get; set; }
+        public string? Password { get; set; }
         public RoleType Role { get; private set; }
         public MemberType MemberType { get; private set; }
         #endregion
@@ -35,6 +36,7 @@ namespace Hillerød_Sejlklub.Models
             Phone = phone;
             Role = role;
             Id = _nextId++;
+            Password = "verysecurepassword";
         }
         #endregion
 

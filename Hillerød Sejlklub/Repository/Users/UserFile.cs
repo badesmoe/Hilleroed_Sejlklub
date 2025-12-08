@@ -4,7 +4,10 @@ namespace Hillerød_Sejlklub.Repository.Users;
 
 public class UserFile: IReposioryUser
 {
-    private List<User> users = new List<User>();
+    private List<User> users = new List<User>()
+    {
+        new User("John Doe", "johndoe@gmail.com", 95594449)
+    };
     
     public void Add(User user)
     {
