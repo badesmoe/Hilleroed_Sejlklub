@@ -8,7 +8,7 @@ namespace Hillerød_Sejlklub.Models
 
         #region Properties
         // Identification
-        public int Id { get; private set; }
+        public int Id { get; set; }
         public int SailNumber { get; set; }
         public string Type { get; set; }
         public string Model { get; set; }
@@ -33,6 +33,8 @@ namespace Hillerød_Sejlklub.Models
         #endregion
 
         #region Constructor
+        public Boat() { }
+
         public Boat(int sailNumber, string type, string model, string name,
             string engineType, 
             double length, double width, double draft, 

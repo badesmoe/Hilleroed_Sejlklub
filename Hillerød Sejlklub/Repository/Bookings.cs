@@ -5,13 +5,13 @@ namespace Hillerød_Sejlklub.Repository
 {
     public class Bookings
     {
-        public List<Booking> BookingsList = new List<Booking>();
-        public List<Booking> BookingLog = new List<Booking>();
+        private List<Booking> _bookingsList = new List<Booking>();
+        private List<Booking> _bookingLog = new List<Booking>();
 
         // This method goes through all existing bookings to see if the boat is already booked for the requested time period.
         public bool CheckAvailability(Boat boat, DateTime startTime, DateTime endTime)
         {
-            foreach (Booking booking in BookingsList)
+            foreach (Booking booking in _bookingsList)
             {
                 if (booking.Boat?.Id == boat.Id)
                 {
@@ -35,18 +35,18 @@ namespace Hillerød_Sejlklub.Repository
                 return;
             }
             else
-                BookingsList.Add(booking);
+                _bookingsList.Add(booking);
         }
         // This method ends a booking by its ID, marking the boat as not booked and moving the booking to the booking log.
         public void EndBooking(int id)
         {
-            for (int i = 0; i < BookingsList.Count; i++)
+            for (int i = 0; i < _bookingsList.Count; i++)
             {
-                if (BookingsList[i].Id == id)
+                if (_bookingsList[i].Id == id)
                 {
-                    BookingsList[i].Boat.IsBooked = false;
-                    BookingLog.Add(BookingsList[i]);
-                    BookingsList.RemoveAt(i);
+                    _bookingsList[i].Boat.IsBooked = false;
+                    _bookingLog.Add(_bookingsList[i]);
+                    _bookingsList.RemoveAt(i);
                     return;
                 }
             }
@@ -54,7 +54,7 @@ namespace Hillerød_Sejlklub.Repository
         // This method searches for a booking by its ID in the current bookings list.
         public Booking? SearchBookings(int id)
         {
-            foreach (Booking booking in BookingsList)
+            foreach (Booking booking in _bookingsList)
             {
                 if (id == booking.Id)
                     return booking;
@@ -64,7 +64,7 @@ namespace Hillerød_Sejlklub.Repository
         // This method searches for a booking by its ID in the booking log.
         public Booking? SearchBookingLog(int id)
         {
-            foreach (Booking booking in BookingLog)
+            foreach (Booking booking in _bookingLog)
             {
                 if (id == booking.Id)
                     return booking;

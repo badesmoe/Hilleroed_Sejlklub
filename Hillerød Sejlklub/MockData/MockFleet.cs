@@ -32,7 +32,12 @@ namespace Hillerød_Sejlklub.MockData
 
         public Boat? Search(int id)
         {
-            throw new NotImplementedException();
+            foreach (Boat boat in _fleet)
+            {
+                if (id == boat.Id)
+                    return boat;
+            }
+            return null;
         }
     }
 }
