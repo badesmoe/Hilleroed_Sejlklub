@@ -8,7 +8,7 @@ namespace Hillerød_Sejlklub.Pages.Users
 {
     public class AllUsersListModel : PageModel
     {
-        private IReposioryUser _users;
+        private IRepositoryUser _users;
 
         public int Id { get; private set; }
         public string? Name { get; set; }
@@ -16,9 +16,9 @@ namespace Hillerød_Sejlklub.Pages.Users
         public int Phone { get; set; }
         public List<User> Users { get; private set; }
 
-        public AllUsersListModel(IReposioryUser reposioryUser)
+        public AllUsersListModel(IRepositoryUser repositoryUser)
         {
-            _users = reposioryUser;
+            _users = repositoryUser;
         }
 
         public void OnGet()

@@ -2,7 +2,7 @@
 
 namespace Hillerød_Sejlklub.Repository.Users;
 
-public class UserFile: IReposioryUser
+public class UserFile: IRepositoryUser
 {
     private List<User> users = new List<User>();
     

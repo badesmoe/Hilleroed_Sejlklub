@@ -3,7 +3,7 @@ using Hillerød_Sejlklub.Repository.Users;
 
 namespace Hillerød_Sejlklub.MockData
 {
-    public class MockUsers: IReposioryUser
+    public class MockUsers: IRepositoryUser
     {
         private static List<User> _users = new List<User>
         {

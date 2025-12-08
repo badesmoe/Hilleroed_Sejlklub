@@ -2,7 +2,7 @@
 
 namespace Hillerød_Sejlklub.Repository.Users
 {
-    public interface IReposioryUser
+    public interface IRepositoryUser
     {
         void Add(User user);
         User? Search(string searchTerm);
