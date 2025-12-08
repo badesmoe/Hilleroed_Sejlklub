@@ -30,16 +30,18 @@
         </tr>
     </thead>
     <tbody>
-        @if (Model.Fleet != null && Model.Boat?.IsBooked == false)
+        @if (Model.Bookings != null)
         {
-            foreach (var item in Model.Fleet)
+            foreach (var item in Model.Bookings)
             {
+                if (item.Boat.IsBooked == false)
+                    continue;
                 <tr>
                     <td>
-                        @item.User
+                        @item.User.Name
                     </td>
                     <td>
-                        @item.Boat
+                        @item.Boat.Name
                     </td>
                     <td>
                         @item.BoatId
@@ -60,16 +62,18 @@
             }
         }
 
-        @if (Model.Fleet != null && Model.Boat?.IsBooked == true)
+        @if (Model.Bookings != null)
         {
-            foreach (var item in Model.Fleet)
+            foreach (var item in Model.Bookings)
             {
+                if (item.Boat.IsBooked)
+                    continue;
                 <tr>
                     <td>
-                        @item.User
+                        @item.User.Name
                     </td>
                     <td>
-                        @item.Boat
+                        @item.Boat.Name
                     </td>
                     <td>
                         @item.BoatId
