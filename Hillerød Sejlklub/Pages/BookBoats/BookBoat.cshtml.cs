@@ -26,7 +26,7 @@ public class BookBoatModel : PageModel
     [BindProperty]
     [Required]
     [Display(Name = "Farvand / destination")]
-    public string Destination { get; set; } = string.Empty;
+    public string Destination { get; set; }
 
     public Boat? Boat { get; private set; }
 
@@ -54,7 +54,6 @@ public class BookBoatModel : PageModel
 
     public IActionResult OnPost()
     {
-        // Hent båden igen på serveren – stol ikke på, hvad klienten poster
         Boat = _fleet.Search(Id);
         if (Boat == null)
             return RedirectToPage("/Index");
@@ -66,11 +65,6 @@ public class BookBoatModel : PageModel
 
         if (!ModelState.IsValid)
             return Page();
-
-        // TODO: Opret booking-objekt og gem det via et booking-repository
-        // var booking = new Booking(Boat.Id, StartDate, EndDate, Destination, currentUserId);
-        // _bookingRepo.Create(booking);
-
         return RedirectToPage("/Bookings/AllBookings");
     }
 }
