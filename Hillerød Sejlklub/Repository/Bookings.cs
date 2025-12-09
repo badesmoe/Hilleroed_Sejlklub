@@ -3,13 +3,13 @@ using System.Diagnostics.Eventing.Reader;
 
 namespace Hillerød_Sejlklub.Repository
 {
-    public class Bookings
+    public class Bookings: IRepositoryBookings
     {
         private List<Booking> _bookingsList = new List<Booking>();
         private List<Booking> _bookingLog = new List<Booking>();
 
         // This method goes through all existing bookings to see if the boat is already booked for the requested time period.
-        public bool CheckAvailability(Boat boat, DateTime startTime, DateTime endTime)
+        public bool CheckAvailability(Boat boat, DateOnly startTime, DateOnly endTime)
         {
             foreach (Booking booking in _bookingsList)
             {
@@ -26,16 +26,19 @@ namespace Hillerød_Sejlklub.Repository
             return true;
         }
         // This method adds a booking to the bookings list if the booking is valid and the boat is available at the given time.
-        public void AddBooking(Booking booking)
+        public bool AddBooking(Booking booking)
         {
             if (booking.InvalidBooking)
-                return;
+                return false;
             else if (CheckAvailability(booking.Boat, booking.StartTime, booking.EndTime)==false)
             {
-                return;
+                return false;
             }
             else
+            {
                 _bookingsList.Add(booking);
+                return true;
+            }
         }
         // This method ends a booking by its ID, marking the boat as not booked and moving the booking to the booking log.
         public void EndBooking(int id)
@@ -70,6 +73,11 @@ namespace Hillerød_Sejlklub.Repository
                     return booking;
             }
             return null;
+        }
+
+        public List<Booking> GetAllBookings()
+        {
+            return _bookingsList;
         }
     }
 }
