@@ -10,12 +10,12 @@ namespace Hillerød_Sejlklub.Models
         // Identification
         public int Id { get; set; }
         public int SailNumber { get; set; }
-        public string Type { get; set; }
-        public string Model { get; set; }
-        public string Name { get; set; }
+        public string Type { get; set; } = string.Empty;
+        public string Model { get; set; } = string.Empty;
+        public string BoatName { get; set; } = string.Empty;
 
         // Engine
-        public string EngineType { get; set; }
+        public string EngineType { get; set; } = string.Empty;
 
         // Measurements
         public double Length { get; set; }
@@ -34,7 +34,6 @@ namespace Hillerød_Sejlklub.Models
 
         #region Constructor
         public Boat() { }
-
         public Boat(int sailNumber, string type, string model, string name,
             string engineType, 
             double length, double width, double draft, 
@@ -44,7 +43,7 @@ namespace Hillerød_Sejlklub.Models
             SailNumber = sailNumber;
             Type = type;
             Model = model;
-            Name = name;
+            BoatName = name;
 
             EngineType = engineType;
 
@@ -69,7 +68,7 @@ namespace Hillerød_Sejlklub.Models
                 $"Sail Number: {SailNumber}\n" +
                 $"Type: {Type}\n" +
                 $"Model: {Model}\n" +
-                $"Name: {Name}\n" +
+                $"Name: {BoatName}\n" +
                 $"Engine Type: {EngineType}\n" +
                 $"Length: {Length} m\n" +
                 $"Width: {Width} m\n" +
