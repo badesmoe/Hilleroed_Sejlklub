@@ -2,7 +2,7 @@
 @model Hillerød_Sejlklub.Pages.BookBoats.BookBoatModel
 @{
 }
-<h1>Book @Model.Boat.Name</h1>
+<h1>Book @Model.Boat?.BoatName</h1>
 
 <form method="post">
     <div class="form-group">
