@@ -10,8 +10,8 @@ namespace Hillerød_Sejlklub.Models
         private static int _nextId;
         public int Id { get; private set; }
         public string Destination { get; set; }
-        public DateTime StartTime { get; set; }
-        public DateTime EndTime { get; set; }
+        public DateOnly StartTime { get; set; }
+        public DateOnly EndTime { get; set; }
         public bool StartInvestigation { get; set; }
         public int BoatId { get; set; }
         public Boat? Boat { get; }
@@ -21,7 +21,7 @@ namespace Hillerød_Sejlklub.Models
             get
             {
                 
-                if (EndTime <= StartTime || StartTime <= DateTime.Now)
+                if (EndTime <= StartTime || StartTime <= DateOnly.FromDateTime(DateTime.Today))
                     return true;
                 
                 else
@@ -32,11 +32,12 @@ namespace Hillerød_Sejlklub.Models
         #endregion
 
     #region Constructor
-        public Booking(User user, Boat boat, DateTime startTime, DateTime endTime, string destination)
+        public Booking(User user, Boat boat, DateOnly startTime, DateOnly endTime, string destination)
         {
             Id = _nextId;
             _nextId++;
             Boat = boat;
+            User = user;
             BoatId = boat.Id;
             Destination = destination;
             StartTime = startTime;
@@ -50,6 +51,7 @@ namespace Hillerød_Sejlklub.Models
         public override string ToString()
         {
             return
+                $"User: {User}\n" + 
                 $"Booking ID: {Id}\n" + 
                 $"Destination: {Destination}\n" +
                 $"Start time: {StartTime}\n" +
