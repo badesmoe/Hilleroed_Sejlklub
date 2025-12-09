@@ -19,11 +19,10 @@ public class BookBoatModel : PageModel
     [BindProperty]
     public DateOnly EndDate { get; set; }
     [BindProperty]
-    public string Destination { get; set; }
-    [BindProperty]
-    public Boat? Boat { get; set; }
-    public int Id { get; set; }
+    public string Destination { get; set; } = string.Empty;
 
+    [BindProperty]
+    public Boat? Boat { get; set; } = null;
     public BookBoatModel(IRepositoryBoat repositoryBoat, IRepositoryUser repositoryUser, IRepositoryBookings repositoryBookings)
     {
         _fleet = repositoryBoat;
@@ -34,12 +33,11 @@ public class BookBoatModel : PageModel
     public IActionResult OnGet(int id)
     {
         Boat = _fleet.Search(id);
-        Id = id;
         if (Boat == null)
-            return RedirectToPage("/Index"); //NotFound er ikke defineret endnu 
+            return RedirectToPage("/Index");
 
-        StartDate = DateOnly.FromDateTime(DateTime.Today);
-        EndDate = DateOnly.FromDateTime(DateTime.Today.AddDays(1));
+        StartDate = DateOnly.FromDateTime(DateTime.Today.AddDays(1));
+        EndDate = DateOnly.FromDateTime(DateTime.Today.AddDays(2));
 
         return Page();
     }
@@ -47,7 +45,8 @@ public class BookBoatModel : PageModel
     public IActionResult OnPost()
     {
         User? user = _users.Search("annahansen@gmail.com");
-        if (_bookings.AddBooking(new Booking(user, Boat, StartDate, EndDate, Destination)))
+        Boat? boat = _fleet.Search(Boat!.Id);
+        if (_bookings.AddBooking(new Booking(user, boat, StartDate, EndDate, Destination)))
             return RedirectToPage("/Bookings/AllBookings");
         else
             return Page();

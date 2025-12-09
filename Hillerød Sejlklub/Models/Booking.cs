@@ -7,14 +7,15 @@ namespace Hillerød_Sejlklub.Models
     public class Booking
     #region Properties
     {
-        private static int _nextId;
+        private static int _nextId = 1;
         public int Id { get; private set; }
         public string Destination { get; set; }
         public DateOnly StartTime { get; set; }
         public DateOnly EndTime { get; set; }
         public bool StartInvestigation { get; set; }
         public int BoatId { get; set; }
-        public Boat? Boat { get; }
+        public string? BoatName { get; set; }
+        public Boat Boat { get; }
         public User? User { get; }
         public bool InvalidBooking
         {
@@ -38,6 +39,7 @@ namespace Hillerød_Sejlklub.Models
             _nextId++;
             Boat = boat;
             User = user;
+            BoatName = boat.BoatName;
             BoatId = boat.Id;
             Destination = destination;
             StartTime = startTime;

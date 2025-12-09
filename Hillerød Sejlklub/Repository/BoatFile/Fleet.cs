@@ -4,7 +4,7 @@ namespace Hillerød_Sejlklub.Repository.BoatFile
 {
     public class Fleet: IRepositoryBoat
     {
-        private List<Boat> fleet = new List<Boat>();
+        private readonly List<Boat> fleet = new List<Boat>();
 
         public void Add(Boat boat)
         {
