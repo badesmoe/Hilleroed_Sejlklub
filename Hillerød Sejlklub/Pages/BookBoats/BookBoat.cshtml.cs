@@ -38,6 +38,9 @@ public class BookBoatModel : PageModel
         if (Boat == null)
             return RedirectToPage("/Index"); //NotFound er ikke defineret endnu 
 
+        StartDate = DateOnly.FromDateTime(DateTime.Today);
+        EndDate = DateOnly.FromDateTime(DateTime.Today.AddDays(1));
+
         return Page();
     }
 
