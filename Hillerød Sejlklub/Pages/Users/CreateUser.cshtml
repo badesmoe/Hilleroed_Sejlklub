@@ -1,0 +1,39 @@
+﻿@page
+@model Hillerød_Sejlklub.Pages.Users.CreateUserModel
+@{
+}
+
+<h1>Opret Ny Bruger</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="User.Name" class="control-label"></label>
+        <input asp-for="User.Name" class="form-control" />
+        <span asp-validation-for="User.Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="User.Phone" class="control-label"></label>
+        <input asp-for="User.Phone" class="form-control" />
+        <span asp-validation-for="User.Phone" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="User.Email" class="control-label"></label>
+        <input asp-for="User.Email" class="form-control" />
+        <span asp-validation-for="User.Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="User.MemberType"></label>
+        <select asp-for="User.MemberType"
+                asp-items="Model.MemberTypeList"
+                class="form-control">
+        </select>
+        <span asp-validation-for="User.MemberType" class="text-danger"></span>
+    </div>
+
+
+    <p>
+        <div class="form-group">
+            <input type="submit" value="Tilføj" class="btn btn-primary" />
+        </div>
+    </p>
+</form> 

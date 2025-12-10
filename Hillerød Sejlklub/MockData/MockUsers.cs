@@ -15,7 +15,7 @@ namespace Hillerød_Sejlklub.MockData
 
         public void Add(User user)
         {
-            throw new NotImplementedException();
+            _users.Add(user);
         }
 
         public void Delete(int id)
