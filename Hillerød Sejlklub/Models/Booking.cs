@@ -15,7 +15,7 @@ namespace Hillerød_Sejlklub.Models
         public bool StartInvestigation { get; set; }
         public int BoatId { get; set; }
         public string? BoatName { get; set; }
-        public Boat Boat { get; }
+        public Boat Boat { get; private set; }
         public User? User { get; }
         public bool InvalidBooking
         {
