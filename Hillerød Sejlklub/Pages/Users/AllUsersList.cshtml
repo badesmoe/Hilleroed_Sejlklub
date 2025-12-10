@@ -53,7 +53,8 @@
                     <td>
                         @item.Phone
                     </td>
-                    <td>  
+                    <td>
+                     @* Form to delete members *@
                     <form method="post"
                           asp-page-handler="Delete"
                           asp-route-id="@item.Id"
