@@ -27,6 +27,8 @@
             <th>
                 Start eftersøgning
             </th>
+            <th>
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -58,10 +60,17 @@
                     <td>
                         @item.StartInvestigation
                     </td>
-                </tr>
-            }
-        }
-
+         
+    <td>
+                    <a class="btn btn-danger btn-sm"
+                       asp-page="/Bookings/EndBookingConfirmation"
+                       asp-route-id="@item.Id">
+                       Afslut booking
+                    </a>
+    </td>
+    </tr>
+        }    
+    }
         @if (Model.Bookings != null)
         {
             foreach (var item in Model.Bookings)
