@@ -30,6 +30,9 @@
             <th>
                 Telefon
             </th>
+                <th>
+                    Slet medlem
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -49,6 +52,16 @@
                     </td>
                     <td>
                         @item.Phone
+                    </td>
+                    <td>  
+                    <form method="post"
+                          asp-page-handler="Delete"
+                          asp-route-id="@item.Id"
+                          onsubmit="return confirm('Er du sikker på, at du vil slette denne bruger?');">
+                        <button type="submit" class="btn btn-danger btn-sm">
+                            Slet
+                        </button>
+                    </form>  
                     </td>
                 </tr>
             }

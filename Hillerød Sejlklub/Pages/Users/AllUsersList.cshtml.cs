@@ -10,11 +10,11 @@ namespace Hillerød_Sejlklub.Pages.Users
     {
         private IRepositoryUser _users;
 
-        public int Id { get; private set; }
+        public int Id { get; set; }
         public string? Name { get; set; }
         public string? Email { get; set; }
         public int Phone { get; set; }
-        public List<User> Users { get; private set; }
+        public List<User> Users { get; set; }
         [BindProperty]
         public string SearchTerm { get; set; }
 
@@ -37,7 +37,7 @@ namespace Hillerød_Sejlklub.Pages.Users
             }
             else
             {
-                List<User?> usersList = new();
+                List<User> usersList = new();
             
                 User? user = _users.Search(SearchTerm);
 
@@ -47,6 +47,11 @@ namespace Hillerød_Sejlklub.Pages.Users
 
                 return Page();
             }
+        }
+        public IActionResult OnPostDelete(int id)
+        {
+            _users.Delete(id);
+            return RedirectToPage("AllUsersList");
         }
     }
 }
