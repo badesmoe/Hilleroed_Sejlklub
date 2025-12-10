@@ -1,4 +1,5 @@
 ﻿using Hillerød_Sejlklub.Repository;
+using System.ComponentModel.DataAnnotations;
 
 namespace Hillerød_Sejlklub.Models
 {
@@ -19,15 +20,27 @@ namespace Hillerød_Sejlklub.Models
         private static int _nextId = 1;
 
         #region Properties
-        public int Id { get; private set; }
-        public string Name { get; set; }
-        public string Email { get; set; }
-        public int Phone { get; set; }
+        public int Id { get; set; }
+        [Display(Name = "Navn")]
+        [Required(ErrorMessage = "Medlem skal have et navn")]
+        public string? Name { get; set; }
+        [Display(Name = "Email")]
+        [Required(ErrorMessage = "Medlem skal have en email")]
+        public string? Email { get; set; }
+        [Display(Name = "Tlf. Nummer")]
+        [Required(ErrorMessage = "Medlem skal have et telefon nummer")]
+        public int? Phone { get; set; }
         public RoleType Role { get; private set; }
-        public MemberType MemberType { get; private set; }
+        public MemberType MemberType { get; set; }
         #endregion
 
         #region Constructor
+
+        public User () 
+        {
+            Id = _nextId++;
+        }
+
         public User(string name, string email, int phone, RoleType role = RoleType.Member)
         {
             Name = name;

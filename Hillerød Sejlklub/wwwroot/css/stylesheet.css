@@ -13,3 +13,9 @@
     z-index: -1;
     filter: blur(4px);
 }
+
+select.form-control {
+    appearance: auto;
+    -webkit-appearance: menulist;
+    -moz-appearance: menulist;
+}
