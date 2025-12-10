@@ -30,7 +30,6 @@ public class AllBookingsModel : PageModel
 public IActionResult OnPostEndBooking (int id)
     {
         _bookings.EndBooking(id);
-        return RedirectToPage();
+        return RedirectToPage("AllBookings");
     }
-
 }

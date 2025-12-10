@@ -28,6 +28,7 @@
                 Start eftersøgning
             </th>
             <th>
+                Afslut booking
             </th>
         </tr>
     </thead>
@@ -60,14 +61,16 @@
                     <td>
                         @item.StartInvestigation
                     </td>
-         
-    <td>
-                    <a class="btn btn-danger btn-sm"
-                       asp-page="/Bookings/EndBookingConfirmation"
-                       asp-route-id="@item.Id">
-                       Afslut booking
-                    </a>
-    </td>
+                    <td>
+                        <form method="post"
+                              asp-page-handler="EndBooking"
+                              asp-route-id="@item.Id"
+                              onsubmit="return confirm('Er du sikker på, at du vil afslutte denne booking?');">
+                            <button type="submit" class="btn btn-danger btn-sm">
+                                Afslut booking
+                            </button>
+                        </form>
+                    </td>
     </tr>
         }    
     }
