@@ -20,7 +20,14 @@ namespace Hillerød_Sejlklub.MockData
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < _users.Count; i++)
+            {
+                if (_users[i].Id == id)
+                {
+                    _users.RemoveAt(i);
+                    return;
+                }
+            }
         }
 
         public User? Search(string searchTerm)

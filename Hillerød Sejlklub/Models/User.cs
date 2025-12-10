@@ -30,7 +30,7 @@ namespace Hillerød_Sejlklub.Models
         [Display(Name = "Tlf. Nummer")]
         [Required(ErrorMessage = "Medlem skal have et telefon nummer")]
         public int? Phone { get; set; }
-        public RoleType Role { get; private set; }
+        public RoleType Role { get; set; }
         public MemberType MemberType { get; set; }
         #endregion
 
