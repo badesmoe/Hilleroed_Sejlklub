@@ -15,6 +15,8 @@ namespace Hillerød_Sejlklub.Pages.Users
         public string? Email { get; set; }
         public int Phone { get; set; }
         public List<User> Users { get; private set; }
+        [BindProperty]
+        public string SearchTerm { get; set; }
 
         public AllUsersListModel(IRepositoryUser repositoryUser)
         {
@@ -24,6 +26,27 @@ namespace Hillerød_Sejlklub.Pages.Users
         public void OnGet()
         {
             Users = _users.GetUsers();
+        }
+
+        public IActionResult OnPostSearchUser()
+        {
+            if(string.IsNullOrEmpty(SearchTerm))
+            {
+                Users = _users.GetUsers();
+                return Page();
+            }
+            else
+            {
+                List<User?> usersList = new();
+            
+                User? user = _users.Search(SearchTerm);
+
+                usersList.Add(user);
+
+                Users = usersList;
+
+                return Page();
+            }
         }
     }
 }
