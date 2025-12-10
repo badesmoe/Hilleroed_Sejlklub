@@ -37,7 +37,7 @@ namespace Hillerød_Sejlklub.MockData
                 foreach (User user in _users)
                 {
                     if (phoneNumber == user.Phone)
-                        return user;
+                        return user;  
                 }
             }
             // Hvis søgetermen indeholder '@', antages der at blive søgt på e-mail
