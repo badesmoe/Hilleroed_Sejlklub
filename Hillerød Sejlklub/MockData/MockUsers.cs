@@ -7,6 +7,10 @@ namespace Hillerød_Sejlklub.MockData
     {
         private static List<User> _users = new List<User>
         {
+            new User("Niels Henrik Meedom", "meedom73@gmail.com", 31659882, RoleType.Admin),
+            new User("Michael Krejlberg", "michael_kreiberg@hotmail.com", 21649832, RoleType.Admin),
+            new User("Christian V Pedersen", "cvesterp@hotmail.com", 26807755, RoleType.Member),
+            new User("Henrik K Knudsen", "henrik.knu@gmail.com", 41397474, RoleType.Member),
             new User("Anna Hansen", "annahansen@gmail.com", 12345678),
             new User("Borge Jensen", "borgejensen@gmail.com", 12546463)
         };
