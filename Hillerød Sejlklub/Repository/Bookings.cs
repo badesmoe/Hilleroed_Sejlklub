@@ -75,9 +75,13 @@ namespace Hillerød_Sejlklub.Repository
             return null;
         }
         // This method return the contents of the entire list.
-        public List<Booking> GetAllBookings()
+        public List<Booking> GetAllActiveBookings()
         {
             return _bookingsList;
+        }
+        public List<Booking> GetAllPreviousBookings()
+        {
+            return _bookingLog;
         }
     }
 }

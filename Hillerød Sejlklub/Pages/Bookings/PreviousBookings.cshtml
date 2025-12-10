@@ -1,0 +1,88 @@
+﻿@page
+@model Hillerød_Sejlklub.Pages.Bookings.PreviousBookingsModel
+@{
+}
+<h1>Aflsuttede Bookninger</h1>
+<table class="table table-bordered table-hover table-striped">
+    <thead>
+        <tr>
+            <th>
+                Bruger
+            </th>
+            <th>
+                Båd
+            </th>
+            <th>
+                Sejlnummer
+            </th>
+            <th>
+                Destination
+            </th>
+            <th>
+                Starttid
+            </th>
+            <th>
+                Sluttid
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Bookings != null)
+        {
+            foreach (var item in Model.Bookings)
+            {
+                if (item.Boat.IsBooked == false)
+                    continue;
+                <tr>
+                    <td>
+                        @item.User?.Name
+                    </td>
+                    <td>
+                        @item.Boat.BoatName
+                    </td>
+                    <td>
+                        @item.Boat.SailNumber
+                    </td>
+                    <td>
+                        @item.Destination
+                    </td>
+                    <td>
+                        @item.StartTime
+                    </td>
+                    <td>
+                        @item.EndTime
+                    </td>
+                </tr>
+            }
+        }
+        @if (Model.Bookings != null)
+        {
+            foreach (var item in Model.Bookings)
+            {
+                if (item.Boat.IsBooked)
+                    continue;
+                <tr>
+                    <td>
+                        @item.User?.Name
+                    </td>
+                    <td>
+                        @item.Boat.BoatName
+                    </td>
+                    <td>
+                        @item.Boat.SailNumber
+                    </td>
+                    <td>
+                        @item.Destination
+                    </td>
+                    <td>
+                        @item.StartTime
+                    </td>
+                    <td>
+                        @item.EndTime
+                    </td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>
