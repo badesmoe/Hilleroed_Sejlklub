@@ -29,3 +29,33 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+
+.landing-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    padding: 20px;
+}
+
+.landing-box {
+    background: rgba(30, 30, 30, 0.35);
+    ;
+    color: white;
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 800px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    margin-top: auto;
+}
