@@ -33,7 +33,11 @@ namespace Hillerød_Sejlklub.Models
         #endregion
 
         #region Constructor
-        public Boat() { }
+        public Boat() 
+        {
+            Id = _nextId++;
+        }
+
         public Boat(int sailNumber, string type, string model, string name,
             string engineType, 
             double length, double width, double draft, 

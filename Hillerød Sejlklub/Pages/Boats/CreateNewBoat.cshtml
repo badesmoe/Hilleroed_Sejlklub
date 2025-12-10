@@ -1,0 +1,55 @@
+﻿@page
+@model Hillerød_Sejlklub.Pages.Boats.CreateNewBoatModel
+@{
+ }
+    <h1> Opret ny båd</h1>
+    <form method="post">
+        <div class="form-group">
+            <label>Sejlnummer</label>
+            <input asp-for="InputBoat.SailNumber" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>Type</label>
+            <input asp-for="InputBoat.Type" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>Model</label>
+            <input asp-for="InputBoat.Model" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>Navn</label>
+            <input asp-for="InputBoat.BoatName" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>Motor</label>
+            <input asp-for="InputBoat.EngineType" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>Længde</label>
+            <input asp-for="InputBoat.Length" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>Bredde</label>
+            <input asp-for="InputBoat.Width" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>Skrog (Draft)</label>
+            <input asp-for="InputBoat.Draft" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>Byggeår</label>
+            <input asp-for="InputBoat.BuildYear" class="form-control" />
+        </div>
+
+        <br />
+
+        <button type="submit" class="btn btn-primary">Opret Båd</button>
+    </form>

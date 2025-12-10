@@ -35,3 +35,4 @@ app.MapRazorPages()
 app.Run();
 
 User user1 = new User("John Doe", "simon@bade.dk", 26444849);
+

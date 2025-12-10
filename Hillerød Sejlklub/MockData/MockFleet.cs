@@ -20,7 +20,7 @@ namespace Hillerød_Sejlklub.MockData
 
         public void Add(Boat boat)
         {
-            throw new NotImplementedException();
+            _fleet.Add(boat);
         }
 
         public void Delete(int id)
