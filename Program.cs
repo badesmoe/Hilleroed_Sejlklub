@@ -1,0 +1,1 @@
+builder.Services.AddSingleton<Hillerød_Sejlklub.Repository.Blog.IRepositoryBlogs, Hillerød_Sejlklub.Repository.Blog.Blogs>();

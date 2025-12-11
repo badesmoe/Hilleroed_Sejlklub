@@ -1,0 +1,61 @@
+﻿@page
+@model Hillerød_Sejlklub.Pages.Blog.IndexModel
+@{
+}
+
+<div style="max-width:900px;margin:20px auto;padding:16px;">
+    <h2>Skriv nyt blogindlæg</h2>
+
+    <form method="post" class="blog-form" style="display:grid;gap:12px;">
+        <div style="display:flex;flex-direction:column;">
+            <label asp-for="NewPost.Title">Titel</label>
+            <input asp-for="NewPost.Title" style="width:100%;padding:8px;border-radius:6px;border:1px solid #ccc;" />
+            <span asp-validation-for="NewPost.Title" class="field-validation-valid" style="color:#b00;"></span>
+        </div>
+
+        <div style="display:flex;flex-direction:column;">
+            <label asp-for="NewPost.Author">Forfatter</label>
+            <input asp-for="NewPost.Author" style="width:100%;padding:8px;border-radius:6px;border:1px solid #ccc;" />
+            <span asp-validation-for="NewPost.Author" class="field-validation-valid" style="color:#b00;"></span>
+        </div>
+
+        <div style="display:flex;flex-direction:column;">
+            <label asp-for="NewPost.Content">Indhold</label>
+            <textarea asp-for="NewPost.Content" rows="8" style="width:100%;padding:8px;border-radius:6px;border:1px solid #ccc;white-space:pre-wrap;"></textarea>
+            <span asp-validation-for="NewPost.Content" class="field-validation-valid" style="color:#b00;"></span>
+        </div>
+
+        <div>
+            <button type="submit" style="padding:8px 14px;border-radius:6px;background:#258cfb;color:white;border:none;cursor:pointer;">Gem</button>
+        </div>
+    </form>
+
+    <hr />
+
+    <h2>Tidligere blogindlæg</h2>
+
+    @if (Model.BlogPosts == null || !Model.BlogPosts.Any())
+    {
+        <p>Her ser tomt ud.</p>
+    }
+    else
+    {
+        <section class="blog-list" style="display:grid;gap:16px;">
+            @foreach (var post in Model.BlogPosts.OrderByDescending(p => p.PublishedDate))
+            {
+                <article class="blog-post" style="background:#fff;color:#111;padding:16px;border-radius:8px;box-shadow:0 1px 6px rgba(0,0,0,0.06);max-width:100%;overflow:hidden;">
+                    <h3 style="margin:0 0 6px;">@post.Title</h3>
+                    <div class="meta" style="font-size:0.9rem;color:#666;margin-bottom:8px;">By @post.Author — @post.PublishedDate.ToString("yyyy-MM-dd HH:mm")</div>
+
+                    <div class="content" style="white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word;line-height:1.5;color:#222;">
+                        @Html.Raw(System.Net.WebUtility.HtmlEncode(post.Content))
+                    </div>
+                </article>
+            }
+        </section>
+    }
+
+    @section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+    }
+</div>
