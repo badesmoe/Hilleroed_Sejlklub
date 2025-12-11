@@ -59,3 +59,92 @@ body {
 footer {
     margin-top: auto;
 }
+
+
+.blog-form {
+  max-width: 900px;
+  margin: 0 auto 24px;
+  display: grid;
+  gap: 12px;
+}
+
+.blog-form div {
+  display: flex;
+  flex-direction: column;
+}
+
+.blog-form label {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.blog-form input[type="text"],
+.blog-form textarea,
+.blog-form input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: white;
+  color: #222;
+}
+
+.blog-form button {
+  align-self: start;
+  padding: 8px 14px;
+  border-radius: 6px;
+  background: #258cfb;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.blog-form button:hover {
+  background: #1b6fd3;
+}
+
+
+.blog-list {
+  max-width: 900px;
+  margin: 0 auto 40px;
+  display: grid;
+  gap: 16px;
+}
+
+.blog-post {
+  background: #ffffff;
+  color: #111;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+  overflow: hidden;
+  word-wrap: break-word;
+}
+
+
+.blog-post .meta {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+
+.blog-post .content {
+  white-space: pre-wrap;        
+  overflow-wrap: anywhere;     
+  word-wrap: break-word;      
+  hyphens: auto;
+  line-height: 1.5;
+  color: #222;
+}
+
+@media (max-width: 600px) {
+  .blog-form, .blog-list {
+    padding: 0 12px;
+  }
+
+  .blog-post {
+    padding: 12px;
+  }
+}
