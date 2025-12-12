@@ -72,8 +72,19 @@ public class UserFile: IRepositoryUser
         return null;
     }
 
-    public void Update(User user)
+    public void Update(int id, User user)
     {
-        throw new NotImplementedException();
+        for (int i = 0; i < users.Count; i++)
+        {
+            if (users[i].Id == id)
+            {
+                users[i].Name = user.Name;
+                users[i].Email = user.Email;
+                users[i].Phone = user.Phone;
+                users[i].Role = user.Role;
+                users[i].MemberType = user.MemberType;
+                return;
+            }
+        }
     }
 }
