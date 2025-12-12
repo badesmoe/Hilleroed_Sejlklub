@@ -1,8 +1,8 @@
 ﻿@page
-@model Hillerød_Sejlklub.Pages.Bookings.AllBookingsModel
+@model Hillerød_Sejlklub.Pages.Bookings.PreviousBookingsModel
 @{
 }
-<h1>Bookninger</h1>
+<h1>Afsluttede Bookninger</h1>
 <table class="table table-bordered table-hover table-striped">
     <thead>
         <tr>
@@ -23,12 +23,6 @@
             </th>
             <th>
                 Slutdato
-            </th>
-            <th>
-                Start eftersøgning
-            </th>
-            <th>
-                Afslut booking
             </th>
         </tr>
     </thead>
@@ -58,23 +52,9 @@
                     <td>
                         @item.EndTime
                     </td>
-                    <td>
-                        @item.StartInvestigation
-                    </td>
-                    <td>
-                        @* Form to end the booking *@
-                        <form method="post"
-                              asp-page-handler="EndBooking"
-                              asp-route-id="@item.Id"
-                              onsubmit="return confirm('Er du sikker på, at du vil afslutte denne booking?');">
-                            <button type="submit" class="btn btn-danger btn-sm">
-                                Afslut booking
-                            </button>
-                        </form>
-                    </td>
-    </tr>
-        }    
-    }
+                </tr>
+            }
+        }
         @if (Model.Bookings != null)
         {
             foreach (var item in Model.Bookings)
@@ -89,7 +69,7 @@
                         @item.Boat.BoatName
                     </td>
                     <td>
-                        @item.Boat.Id
+                        @item.Boat.SailNumber
                     </td>
                     <td>
                         @item.Destination
@@ -99,9 +79,6 @@
                     </td>
                     <td>
                         @item.EndTime
-                    </td>
-                    <td>
-                        @item.StartInvestigation
                     </td>
                 </tr>
             }

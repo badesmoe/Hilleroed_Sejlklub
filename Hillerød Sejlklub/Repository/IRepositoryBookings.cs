@@ -8,6 +8,7 @@ namespace Hillerød_Sejlklub.Repository
         void EndBooking(int id);
         Booking? SearchBookings(int id);
         Booking? SearchBookingLog(int id);
-        List<Booking> GetAllBookings();
+        List<Booking> GetAllActiveBookings();
+        List<Booking> GetAllPreviousBookings();
     }
 }
