@@ -29,26 +29,14 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-
                     @*Venstre side*@
                     <ul class="navbar-nav me-auto">
-                        @*Bruger dropdown*@
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-dark"
-                               href="#"
-                               id="userMenuDropdown"
-                               role="button"
-                               data-bs-toggle="dropdown"
-                               aria-expanded="false">
-                                Menu
-                            </a>
-
-                            <ul class="dropdown-menu" aria-labelledby="userMenuDropdown">
-                                <li><a class="dropdown-item" asp-page="/Boats/AllBoatsUser">Flåde</a></li>
-                                <li><a class="dropdown-item" asp-page="/Bookings/AllBookings">Bookinger</a></li>
-                            </ul>
+                        <li class="nav-link">
+                            <a class="dropdown-item" asp-page="/Boats/AllBoatsUser">Flåde</a>
                         </li>
-                        @*Blog*@
+                        <li class="nav-link">
+                            <a class="dropdown-item" asp-page="/Bookings/AllBookings">Bookinger</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-page="/Blog/BlogPage">Blog</a>
                         </li>
