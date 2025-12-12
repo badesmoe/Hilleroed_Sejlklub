@@ -77,14 +77,32 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li>
-
-                        <!-- Moved Blog link here so it appears next to Bruger Menu -->
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-page="/Blog/BlogPage">Blog</a>
-                        </li>
-                    </ul>
-
+                        </ul>
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-dark"
+                                   href="#"
+                                   id="userDropdown"
+                                   role="button"
+                                   data-bs-toggle="dropdown"
+                                   aria-expanded="false">
+                                    Bruger Menu
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                                    <li>
+                                        <a class="dropdown-item" asp-area="" asp-page="/Boats/AllBoatsUser">
+                                            Flåde
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" asp-area="" asp-page="/Bookings/AllBookings">
+                                            Bookinger
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                </div>
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
                             <a class="nav-link" asp-page="/LoginRegister/Login">
