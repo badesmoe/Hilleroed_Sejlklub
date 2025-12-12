@@ -71,4 +71,9 @@ public class UserFile: IRepositoryUser
         // returneres null for at indikere "ingen fundet"
         return null;
     }
+
+    public void Update(User user)
+    {
+        throw new NotImplementedException();
+    }
 }
