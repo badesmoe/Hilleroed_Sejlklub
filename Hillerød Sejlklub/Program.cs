@@ -3,6 +3,7 @@ using Hillerød_Sejlklub.Models;
 using Hillerød_Sejlklub.Repository;
 using Hillerød_Sejlklub.Repository.Blog;
 using Hillerød_Sejlklub.Repository.BoatFile;
+using Hillerød_Sejlklub.Repository.EventsFile;
 using Hillerød_Sejlklub.Repository.Users;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +14,7 @@ builder.Services.AddSingleton<IRepositoryUser, MockUsers>();
 builder.Services.AddSingleton<IRepositoryBoat, MockFleet>();
 builder.Services.AddSingleton<IRepositoryBookings, Bookings>();
 builder.Services.AddSingleton<IRepositoryBlogs, Blogs>();
+builder.Services.AddSingleton<IRepositoryEvents, EventsRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -26,7 +28,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapStaticAssets();
