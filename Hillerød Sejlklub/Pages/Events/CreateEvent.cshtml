@@ -1,0 +1,32 @@
+﻿@page
+@model Hillerød_Sejlklub.Pages.Events.CreateEventModel
+@{
+}
+@Html.ValidationSummary(true)
+
+<h1>Opret nyt Event</h1>
+
+<form method="post">
+
+    <div class="form-group">
+        <label>Navn</label>
+        <input asp-for="InputEvent.Name" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Beskrivelse</label>
+        <input asp-for="InputEvent.Description" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Dato</label>
+        <input asp-for="InputEvent.Date" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Maksimalt antal deltagere</label>
+        <input asp-for="InputEvent.MaxParticipants" class="form-control" />
+    </div>
+
+    <button class="btn btn-primary mt-3">Opret Event</button>
+</form>

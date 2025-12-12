@@ -1,0 +1,27 @@
+﻿@page "{id:int}"
+@using Hillerød_Sejlklub.Models
+@model Hillerød_Sejlklub.Pages.Events.EventDetailsModel
+@{
+}
+
+<h2>@Model.CurrentEvent?.Name</h2>
+
+<p><b>Dato:</b> @Model.CurrentEvent?.Date</p>
+<p><b>Beskrivelse:</b> @Model.CurrentEvent?.Description</p>
+<p><b>Maks deltagere:</b> @Model.CurrentEvent?.MaxParticipants</p>
+
+<h3>Deltagere</h3>
+
+@if (!string.IsNullOrEmpty(Model.CurrentEvent?.Participants))
+{
+    <p>@Model.CurrentEvent?.Participants</p>
+}
+else
+{
+    <p>Ingen deltagere endnu.</p>
+}
+
+<form method="post" asp-page-handler="Join">
+    <input asp-for="NewParticipant" placeholder="Dit navn" class="form-control" />
+    <button class="btn btn-success mt-2">Tilmeld</button>
+</form>
