@@ -21,7 +21,34 @@
                 </button>
 
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+
+                    @*Venstre side*@
+                    <ul class="navbar-nav me-auto">
+                        @*Bruger dropdown*@
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark"
+                               href="#"
+                               id="userMenuDropdown"
+                               role="button"
+                               data-bs-toggle="dropdown"
+                               aria-expanded="false">
+                                Menu
+                            </a>
+
+                            <ul class="dropdown-menu" aria-labelledby="userMenuDropdown">
+                                <li><a class="dropdown-item" asp-page="/Boats/AllBoatsUser">Flåde</a></li>
+                                <li><a class="dropdown-item" asp-page="/Bookings/AllBookings">Bookinger</a></li>
+                            </ul>
+                        </li>
+                        @*Blog*@
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-page="/Blog/BlogPage">Blog</a>
+                        </li>
+                    </ul>
+
+                    @*Højre side@*@
+                    <ul class="navbar-nav ms-auto">
+                        @*Admin Dropdown*@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-dark"
                                href="#"
@@ -33,81 +60,15 @@
                             </a>
 
                             <ul class="dropdown-menu" aria-labelledby="adminDropdown">
-                                <li>
-                                    <a class="dropdown-item" asp-area="" asp-page="/Users/AllUsersList">
-                                        Medlemmer
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" asp-area="" asp-page="/Boats/AllBoats">
-                                        Flåde
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" asp-area="" asp-page="/Bookings/ActiveBookings">
-                                        Aktive Bookinger
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" asp-area="" asp-page="/Bookings/PreviousBookings">
-                                        Afsluttede Bookinger
-                                    </a>
-                                </li>
+                                <li><a class="dropdown-item" asp-page="/Users/AllUsersList">Medlemmer</a></li>
+                                <li><a class="dropdown-item" asp-page="/Boats/AllBoats">Flåde</a></li>
+                                <li><a class="dropdown-item" asp-page="/Bookings/ActiveBookings">Aktive Bookinger</a></li>
+                                <li><a class="dropdown-item" asp-page="/Bookings/PreviousBookings">Afsluttede Bookinger</a></li>
                             </ul>
                         </li>
-
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-dark"
-                               href="#"
-                               id="userDropdown"
-                               role="button"
-                               data-bs-toggle="dropdown"
-                               aria-expanded="false">
-                                Bruger Menu
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="userDropdown">
-                                <li>
-                                    <a class="dropdown-item" asp-area="" asp-page="/Boats/AllBoatsUser">
-                                        Flåde
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" asp-area="" asp-page="/Bookings/AllBookings">
-                                        Bookinger
-                                    </a>
-                                </li>
-                            </ul>
-                        </ul>
-                        <ul class="navbar-nav flex-grow-1">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle text-dark"
-                                   href="#"
-                                   id="userDropdown"
-                                   role="button"
-                                   data-bs-toggle="dropdown"
-                                   aria-expanded="false">
-                                    Bruger Menu
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="userDropdown">
-                                    <li>
-                                        <a class="dropdown-item" asp-area="" asp-page="/Boats/AllBoatsUser">
-                                            Flåde
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" asp-area="" asp-page="/Bookings/AllBookings">
-                                            Bookinger
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                </div>
-                    <ul class="navbar-nav ms-auto">
+                        @*Login*@
                         <li class="nav-item">
-                            <a class="nav-link" asp-page="/LoginRegister/Login">
-                                Login
-                            </a>
+                            <a class="nav-link" asp-page="/LoginRegister/Login">Login</a>
                         </li>
                     </ul>
                 </div>

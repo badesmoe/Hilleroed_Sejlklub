@@ -34,6 +34,9 @@
             <th>
                 Book
             </th>
+            <th>
+                Anmeld skade
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -69,6 +72,10 @@
                     <td>
                         <a class="btn btn-primary btn-sm" type="button" title="Book"
                            asp-page="../BookBoats/BookBoat" asp-route-id="@item.Id">Book</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-primary btn-sm" type="button" title="Anmeld skade"
+                           asp-page="../BookBoats/BookBoat" asp-route-id="@item.Id">Anmeld skade</a>
                     </td>
                 </tr>
             }
