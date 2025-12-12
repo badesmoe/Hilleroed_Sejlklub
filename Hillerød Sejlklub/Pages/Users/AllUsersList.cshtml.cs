@@ -14,6 +14,7 @@ namespace Hillerød_Sejlklub.Pages.Users
         public string? Name { get; set; }
         public string? Email { get; set; }
         public int Phone { get; set; }
+        [BindProperty]
         public List<User> Users { get; set; }
         [BindProperty]
         public string SearchTerm { get; set; }

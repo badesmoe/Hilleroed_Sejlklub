@@ -75,13 +75,17 @@ namespace Hillerød_Sejlklub.MockData
             return null;
         }
 
-        public void Update(User user)
+        public void Update(int oldId, User newUser)
         {
             for (int i = 0; i < _users.Count; i++)
             {
-                if (_users[i].Id == user.Id)
+                if (_users[i].Id == oldId)
                 {
-                    _users[i] = user;
+                    _users[i].Name = newUser.Name;
+                    _users[i].Email = newUser.Email;
+                    _users[i].Phone = newUser.Phone;
+                    _users[i].Role = newUser.Role;
+                    _users[i].MemberType = newUser.MemberType;
                     return;
                 }
             }

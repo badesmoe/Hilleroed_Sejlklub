@@ -3,12 +3,16 @@ using Hillerød_Sejlklub.Repository.Users;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Xml.Linq;
 
 namespace Hillerød_Sejlklub.Pages.Users
 {
     public class UpdateUserModel : PageModel
     {
         private IRepositoryUser _users;
+
+        [BindProperty]
+        public int OldId { get; set; }
 
         [BindProperty]
         public User User { get; set; }
@@ -23,8 +27,14 @@ namespace Hillerød_Sejlklub.Pages.Users
             _users = repositoryUser;
         }
 
-        public IActionResult OnGet()
+        public IActionResult OnGet(string name)
         {
+            User = _users.Search(name);
+            OldId = User.Id;
+            
+            if (User == null)
+                return RedirectToPage("/NotFound");
+
             MemberTypeList = new SelectList(Enum.GetValues(typeof(MemberType)));
             return Page();
 
@@ -37,7 +47,8 @@ namespace Hillerød_Sejlklub.Pages.Users
                 MemberTypeList = new SelectList(Enum.GetValues(typeof(MemberType)));
                 return Page();
             }
-            _users.Update(User);
+            
+            _users.Update(OldId, User);
             return RedirectToPage("AllUsersList");
         }
     }
