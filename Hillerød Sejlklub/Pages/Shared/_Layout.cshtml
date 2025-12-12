@@ -19,6 +19,7 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item dropdown">
@@ -43,9 +44,10 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" asp-area="" asp-page="/Bookings/AllBookings">
+                                    <a class="dropdown-item" asp-area="" asp-page="/Bookings/ActiveBookings">
                                         Aktive Bookinger
                                     </a>
+                                </li>
                                 <li>
                                     <a class="dropdown-item" asp-area="" asp-page="/Bookings/PreviousBookings">
                                         Afsluttede Bookinger
@@ -53,6 +55,29 @@
                                 </li>
                             </ul>
                         </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark"
+                               href="#"
+                               id="userDropdown"
+                               role="button"
+                               data-bs-toggle="dropdown"
+                               aria-expanded="false">
+                                Bruger Menu
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                                <li>
+                                    <a class="dropdown-item" asp-area="" asp-page="/Boats/AllBoatsUser">
+                                        Flåde
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" asp-area="" asp-page="/Bookings/AllBookings">
+                                        Bookinger
+                                    </a>
+                                </li>
+                            </ul>
+                        </ul>
                         <ul class="navbar-nav flex-grow-1">
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle text-dark"
@@ -77,7 +102,6 @@
                                 </ul>
                             </li>
                         </ul>
-                    </ul>
                 </div>
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
@@ -87,6 +111,7 @@
                         </li>
                     </ul>
                 </div>
+            </div>
         </nav>
     </header>
     <div class="container">

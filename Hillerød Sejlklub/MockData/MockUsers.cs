@@ -74,5 +74,17 @@ namespace Hillerød_Sejlklub.MockData
             // returneres null for at indikere "ingen fundet"
             return null;
         }
+
+        public void Update(User user)
+        {
+            for (int i = 0; i < _users.Count; i++)
+            {
+                if (_users[i].Id == user.Id)
+                {
+                    _users[i] = user;
+                    return;
+                }
+            }
+        }
     }
 }

@@ -30,8 +30,11 @@
             <th>
                 Telefon
             </th>
-                <th>
-                    Slet medlem
+            <th>
+                Opdater informationer
+            </th>
+            <th>
+                Slet medlem
             </th>
         </tr>
     </thead>
@@ -52,6 +55,13 @@
                     </td>
                     <td>
                         @item.Phone
+                    </td>
+                    <td>
+                        <a class="btn btn-warning btn-sm"
+                            asp-page="UpdateUser"
+                            asp-route-id="@item.Id">
+                            Opdater
+                        </a>
                     </td>
                     <td>
                      @* Form to delete members *@
