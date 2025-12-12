@@ -12,6 +12,8 @@ namespace Hillerød_Sejlklub.Pages.Boats
 
         public List<Boat> Fleet { get; private set; }
 
+        [TempData]
+        public string? ErrorMessage { get; set; }
 
        public AllBoatsUserModel(IRepositoryBoat repositoryBoat)
        {

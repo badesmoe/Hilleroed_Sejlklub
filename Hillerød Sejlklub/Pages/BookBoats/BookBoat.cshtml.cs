@@ -23,6 +23,7 @@ public class BookBoatModel : PageModel
 
     [BindProperty]
     public Boat? Boat { get; set; } = null;
+    public string? ErrorMessage { get; set; } = null;
     public BookBoatModel(IRepositoryBoat repositoryBoat, IRepositoryUser repositoryUser, IRepositoryBookings repositoryBookings)
     {
         _fleet = repositoryBoat;
@@ -49,7 +50,9 @@ public class BookBoatModel : PageModel
         if (_bookings.AddBooking(new Booking(user, boat, StartDate, EndDate, Destination)))
             return RedirectToPage("/Bookings/AllBookings");
         else
-            return Page();
-
+        {
+            TempData["ErrorMessage"] = "Båden du har valgt er allerede booket i dette tidsrum. Vælg en ny fra listen.";
+            return RedirectToPage("/Boats/AllBoatsUser");
+        }
     }
 }
