@@ -20,6 +20,7 @@ public class BookBoatModel : PageModel
     public DateOnly EndDate { get; set; }
     [BindProperty]
     public string Destination { get; set; } = string.Empty;
+    public List<Booking> Bookings { get; private set; }
 
     [BindProperty]
     public Boat? Boat { get; set; } = null;
@@ -34,6 +35,7 @@ public class BookBoatModel : PageModel
     public IActionResult OnGet(int id)
     {
         Boat = _fleet.Search(id);
+        Bookings = _bookings.GetAllActiveBookings();
         if (Boat == null)
             return RedirectToPage("/Index");
 
@@ -51,7 +53,7 @@ public class BookBoatModel : PageModel
             return RedirectToPage("/Bookings/AllBookings");
         else
         {
-            TempData["ErrorMessage"] = "Båden du har valgt er allerede booket i dette tidsrum. Vælg en ny fra listen.";
+            TempData["ErrorMessage"] = "Båden du har valgt er allerede booket i dette tidsrum. Vælg en ny fra listen eller vælg et andet tidsrum.";
             return RedirectToPage("/Boats/AllBoatsUser");
         }
     }
