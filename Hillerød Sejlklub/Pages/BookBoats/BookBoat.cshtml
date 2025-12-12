@@ -20,3 +20,51 @@
         alert('@Model.ErrorMessage');
     </script>
 }
+<h1>Aktive Bookinger på båd</h1>
+<table class="table table-bordered table-hover table-striped">
+    <thead>
+        <tr>
+            <th>
+                Båd
+            </th>
+            <th>
+                Sejlnummer
+            </th>
+            <th>
+                Destination
+            </th>
+            <th>
+                Startdato
+            </th>
+            <th>
+                Slutdato
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@{
+    var activeBookings = Model.Bookings?
+        .Where(booking => booking.Boat.Id == Model.Boat?.Id && booking.Boat.IsBooked)
+        .ToList();
+}
+@if (activeBookings != null && activeBookings.Any())
+{
+    foreach (var item in activeBookings)
+    {
+        <tr>
+            <td>@item.Boat.BoatName</td>
+            <td>@item.Boat.SailNumber</td>
+            <td>@item.Destination</td>
+            <td>@item.StartTime</td>
+            <td>@item.EndTime</td>
+        </tr>
+    }
+}
+else
+{
+    <tr>
+        <td colspan="5">Ingen aktive bookinger på denne båd.</td>
+    </tr>
+}
+</tbody>
+</table>

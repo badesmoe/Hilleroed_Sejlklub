@@ -1,0 +1,38 @@
+﻿@page
+@model Hillerød_Sejlklub.Pages.Events.AllEventsModel
+@{
+}
+<h1>Klub Events</h1>
+
+<a class="btn btn-primary" asp-page="/Events/CreateEvent">Opret Nyt Event</a>
+
+<table class="table table-bordered table-striped mt-3">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Navn</th>
+            <th>Beskrivelse</th>
+            <th>Dato</th>
+            <th>Max Deltagere</th>
+            <th>Detaljer</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var ev in Model.EventsList)
+        {
+            <tr>
+                <td>@ev.EventId</td>
+                <td>@ev.Name</td>
+                <td>@ev.Description</td>
+                <td>@ev.Date</td>
+                <td>@ev.MaxParticipants</td>
+
+                <td>
+                    <a asp-page="/Events/EventDetails" asp-route-id="@ev.EventId"
+                       class="btn btn-sm btn-info">Se</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
