@@ -3,6 +3,13 @@
 @{
 }
 
+@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <script>
+        alert('@Html.Raw(Model.ErrorMessage?.Replace("'", "\\'"))');
+    </script>
+}
+
 <h1>Flåde</h1>
 <table class="table table-bordered table-hover table-striped">
     <thead>
@@ -70,12 +77,12 @@
                         @item.Draft
                     </td>
                     <td>
-                        <a class="btn btn-primary btn-sm" type="button" title="Book"
+                        <a class="btn btn-success btn-sm" type="button" title="Book"
                            asp-page="../BookBoats/BookBoat" asp-route-id="@item.Id">Book</a>
                     </td>
                     <td>
-                        <a class="btn btn-primary btn-sm" type="button" title="Anmeld skade"
-                           asp-page="../BookBoats/BookBoat" asp-route-id="@item.Id">Anmeld skade</a>
+                        <a class="btn btn-danger btn-sm" type="button" title="Anmeld skade"
+                           asp-page="../BoatReports/BoatDamageReport" asp-route-id="@item.Id">Anmeld skade</a>
                     </td>
                 </tr>
             }
