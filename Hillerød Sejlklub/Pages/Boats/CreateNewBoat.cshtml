@@ -4,6 +4,12 @@
  }
     <h1> Opret ny båd</h1>
     <form method="post">
+         <div class="form-group">
+        <label>Billede</label>
+        <input asp-for="InputBoat.ImagePath"
+               class="form-control"
+               placeholder="/img/boats/ADD-PICTURE-NAME-HERE.jpg" />
+       </div>
         <div class="form-group">
             <label>Sejlnummer</label>
             <input asp-for="InputBoat.SailNumber" class="form-control" />
@@ -13,7 +19,6 @@
             <label>Type</label>
             <input asp-for="InputBoat.Type" class="form-control" />
         </div>
-
         <div class="form-group">
             <label>Model</label>
             <input asp-for="InputBoat.Model" class="form-control" />
