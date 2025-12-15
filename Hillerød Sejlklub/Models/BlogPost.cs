@@ -9,20 +9,23 @@
         public string Content { get; set; } = string.Empty;
         public DateTime PublishedDate { get; set; }
         public string Author { get; set; } = string.Empty;
+        public string ImagePath { get; set; } = string.Empty;
+
         #endregion
-        
+
         #region Constructor
         public BlogPost()
         {
             Id = _nextId++;
         }
-        public BlogPost(string title, string content, DateTime publishedDate, string author)
+        public BlogPost(string title, string content, DateTime publishedDate, string author, string imagePath)
         {
             Id = _nextId++;
             Title = title;
             Content = content;
             PublishedDate = publishedDate;
             Author = author;
+            ImagePath = imagePath;
         }
         #endregion
     

@@ -1,0 +1,34 @@
+﻿@page
+@model Hillerød_Sejlklub.Pages.Blog.UsersBlogModel
+@{
+}
+
+<h1>Blog</h1>
+
+@if (!Model.BlogPosts.Any())
+{
+    <p>Ingen blogindlæg endnu.</p>
+}
+else
+{
+    foreach (var post in Model.BlogPosts.OrderByDescending(p => p.PublishedDate))
+    {
+        <article style="margin-bottom:30px;">
+            
+            @if (!string.IsNullOrEmpty(post.ImagePath))
+            {
+                <img src="@post.ImagePath"
+                     style="max-width:100%;border-radius:10px;margin-bottom:10px;" />
+            }
+
+            <h3>@post.Title</h3>
+            <p style="color:gray;">
+                @post.Author — @post.PublishedDate.ToString("dd-MM-yyyy")
+            </p>
+
+            <p style="white-space:pre-wrap;">
+                @post.Content
+            </p>
+        </article>
+    }
+}
