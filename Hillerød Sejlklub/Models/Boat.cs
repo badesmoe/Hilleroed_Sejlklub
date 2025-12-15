@@ -29,6 +29,9 @@ namespace Hillerød_Sejlklub.Models
         public bool IsBooked { get; set; }
         #endregion
 
+        //Image
+        public string ImagePath { get; set; } = "";
+
         #region Constructor
         public Boat() 
         {
@@ -38,7 +41,8 @@ namespace Hillerød_Sejlklub.Models
         public Boat(int sailNumber, string type, string model, string name,
             string engineType, 
             double length, double width, double draft, 
-            int buildYear)
+            int buildYear, 
+            string imagePath)
         {
             Id = _nextId++;
             SailNumber = sailNumber;
@@ -54,8 +58,9 @@ namespace Hillerød_Sejlklub.Models
 
             BuildYear = buildYear;
 
+            ImagePath = imagePath;
             IsBooked = false;
-
+            
         }
         #endregion
 
