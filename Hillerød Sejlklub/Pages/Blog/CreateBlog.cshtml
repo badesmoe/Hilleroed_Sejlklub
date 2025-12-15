@@ -1,0 +1,30 @@
+﻿@page
+@model Hillerød_Sejlklub.Pages.Blog.CreateBlogModel
+@{
+}
+
+<h1>Opret blogindlæg</h1>
+
+<form method="post">
+    <label>Titel</label>
+    <input asp-for="NewPost.Title" class="form-control" />
+
+    <label>Forfatter</label>
+    <input asp-for="NewPost.Author" class="form-control" />
+
+    <label>Billede (sti)</label>
+    <input asp-for="NewPost.ImagePath"
+           class="form-control"
+           placeholder="/img/blog/example.jpg" />
+
+    <label>Indhold</label>
+    <textarea asp-for="NewPost.Content"
+              class="form-control"
+              rows="8"></textarea>
+
+    <br />
+    <button class="btn btn-primary">Gem</button>
+   
+</form>
+
+

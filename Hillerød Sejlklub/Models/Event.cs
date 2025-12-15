@@ -12,6 +12,8 @@ public class Event
     public string Date { get; set; }
     public int MaxParticipants { get; set; }
     public string Participants { get; set; }
+   
+
 
     public Event()
     {
