@@ -1,27 +1,108 @@
 ﻿@page "{id:int}"
-@using Hillerød_Sejlklub.Models
 @model Hillerød_Sejlklub.Pages.Events.EventDetailsModel
 @{
 }
 
 <h2>@Model.CurrentEvent?.Name</h2>
 
-<p><b>Dato:</b> @Model.CurrentEvent?.Date</p>
+
+
+@if (TempData["JoinMessage"] != null)
+{
+    <div class="alert @( (bool)TempData["JoinSuccess"] ? "alert-success" : "alert-danger")">
+        @TempData["JoinMessage"]
+    </div>
+}
+
+<p><b>Dato:</b> @Model.CurrentEvent?.Date.ToString("dd-MM-yyyy")</p>
 <p><b>Beskrivelse:</b> @Model.CurrentEvent?.Description</p>
 <p><b>Maks deltagere:</b> @Model.CurrentEvent?.MaxParticipants</p>
 
 <h3>Deltagere</h3>
-
-@if (!string.IsNullOrEmpty(Model.CurrentEvent?.Participants))
+@if (!string.IsNullOrEmpty(Model.CurrentEvent.ImagePath))
 {
-    <p>@Model.CurrentEvent?.Participants</p>
+    <img src="@Model.CurrentEvent.ImagePath"
+         style="max-width:100%; border-radius:10px; margin-bottom:15px;" />
+}
+
+@if (Model.CurrentEvent?.Participants != null && Model.CurrentEvent.Participants.Any())
+{
+    <ul class="list-group">
+        @foreach (var p in Model.CurrentEvent.Participants)
+        {
+            <li class="list-group-item">
+                <strong>@p.Name</strong><br />
+                <small class="text-muted">
+                    📧 @p.Email <br />
+                    📞 @p.Phone
+                </small>
+            </li>
+        }
+    </ul>
 }
 else
 {
     <p>Ingen deltagere endnu.</p>
 }
 
-<form method="post" asp-page-handler="Join">
-    <input asp-for="NewParticipant" placeholder="Dit navn" class="form-control" />
-    <button class="btn btn-success mt-2">Tilmeld</button>
-</form>
+<button class="btn btn-success mt-3"
+        data-bs-toggle="modal"
+        data-bs-target="#joinModal">
+    Tilmeld event
+</button>
+
+@{
+    var taken = Model.CurrentEvent.Participants.Count;
+    var max = Model.CurrentEvent.MaxParticipants;
+    var available = max - taken;
+    var badgeClass = available == 0 ? "bg-danger"
+                   : available <= 2 ? "bg-warning"
+                   : "bg-success";
+}
+
+<span class="badge @badgeClass">
+    @taken / @max pladser optaget – @available ledige
+</span>
+
+<div class="modal fade" id="joinModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="post" asp-page-handler="Join">
+                <div class="modal-header">
+                    <h5 class="modal-title">Tilmeld event</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label>Navn</label>
+                        <input asp-for="NewParticipant.Name"
+                               class="form-control"
+                               required />
+                    </div>
+
+                    <div class="mb-3">
+                        <label>Email</label>
+                        <input asp-for="NewParticipant.Email"
+                               type="email"
+                               class="form-control"
+                               required />
+                    </div>
+
+                    <div class="mb-3">
+                        <label>Telefone</label>
+                        <input asp-for="NewParticipant.Phone"
+                               type="tel"
+                               placeholder="+45 xx xx xx xx"
+                               class="form-control"
+                               required />
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-success">Tilmeld</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

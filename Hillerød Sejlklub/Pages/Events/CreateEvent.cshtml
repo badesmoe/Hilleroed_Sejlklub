@@ -2,17 +2,21 @@
 @model Hillerød_Sejlklub.Pages.Events.CreateEventModel
 @{
 }
-@Html.ValidationSummary(true)
 
 <h1>Opret nyt Event</h1>
 
 <form method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
 
     <div class="form-group">
         <label>Navn</label>
         <input asp-for="InputEvent.Name" class="form-control" />
     </div>
-
+    <div class="form-group">
+        <label>Billede (sti)</label>
+        <input asp-for="InputEvent.ImagePath" class="form-control"
+         placeholder="/img/events/TYPE_THE_PICTURE_NAME_HERE.jpg" />
+    </div>
     <div class="form-group">
         <label>Beskrivelse</label>
         <input asp-for="InputEvent.Description" class="form-control" />
@@ -20,7 +24,7 @@
 
     <div class="form-group">
         <label>Dato</label>
-        <input asp-for="InputEvent.Date" class="form-control" />
+        <input asp-for="InputEvent.Date" type="date" class="form-control" />
     </div>
 
     <div class="form-group">

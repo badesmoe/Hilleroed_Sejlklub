@@ -8,7 +8,8 @@ public interface IRepositoryEvents
     void DeleteEvent(int eventid);
     List <Event> GetAllEvents();
     Event? SearchEvents(int eventid);
-    void AddParticipant(int eventId, string memberName);
-    void RemoveParticipant( int eventId, string memberName);
+
+    bool AddParticipant(int eventId, EventParticipant participant, out string message);
+    void RemoveParticipant(int eventId, EventParticipant participant);
 
 }

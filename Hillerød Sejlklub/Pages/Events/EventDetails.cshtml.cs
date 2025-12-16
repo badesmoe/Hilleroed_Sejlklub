@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Hillerød_Sejlklub.Pages.Events
 {
-    [AllowAnonymous]
+    //[AllowAnonymous]
     public class EventDetailsModel : PageModel
     {
         private readonly IRepositoryEvents _repo;
@@ -14,7 +14,7 @@ namespace Hillerød_Sejlklub.Pages.Events
         public Event? CurrentEvent { get; set; }
 
         [BindProperty]
-        public string NewParticipant { get; set; } = "";
+        public EventParticipant NewParticipant { get; set; } = new();
 
         public EventDetailsModel(IRepositoryEvents repo)
         {
@@ -32,9 +32,12 @@ namespace Hillerød_Sejlklub.Pages.Events
 
         public IActionResult OnPostJoin(int id)
         {
-            _repo.AddParticipant(id, NewParticipant);
+            bool success = _repo.AddParticipant(id, NewParticipant, out string message);
 
-            return RedirectToPage(new { id = id });
+            TempData["JoinMessage"] = message;
+            TempData["JoinSuccess"] = success;
+
+            return RedirectToPage(new { id });
         }
     }
 }

@@ -5,14 +5,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 namespace Hillerød_Sejlklub.Pages.Events;
 
-[Authorize(Roles = "Admin")]
+//[Authorize(Roles = "Admin")]
 public class CreateEventModel : PageModel
 {
     private readonly IRepositoryEvents _repo;
 
     [BindProperty]
-    public Event InputEvent { get; set; } =
-        new Event("", "", "", 0, "");
+    public Event InputEvent { get; set; } = new();
+
 
     public CreateEventModel(IRepositoryEvents repo)
     {

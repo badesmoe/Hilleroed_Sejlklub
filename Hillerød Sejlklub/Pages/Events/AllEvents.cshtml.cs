@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Hillerød_Sejlklub.Pages.Events;
 
-[AllowAnonymous]
+//[AllowAnonymous]
 public class AllEventsModel : PageModel
 {
     private readonly IRepositoryEvents _repo;
@@ -20,6 +20,5 @@ public class AllEventsModel : PageModel
     public void OnGet()
     {
         EventsList = _repo.GetAllEvents();
-        Console.WriteLine("POST RECEIVED");
     }
 }
