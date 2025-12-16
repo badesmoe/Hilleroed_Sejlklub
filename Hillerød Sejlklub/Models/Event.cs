@@ -4,31 +4,28 @@ namespace Hillerød_Sejlklub.Models;
 
 public class Event
 {
-    private static int _nextId= 1; 
 
     public int EventId { get; set; }
-    public string Name { get; set; }
-    public string Description { get; set; }
-    public string Date { get; set; }
+    public string Name { get; set; } = string.Empty;
+    public string Description { get; set; } = string.Empty;
+    public DateTime Date { get; set; }
     public int MaxParticipants { get; set; }
-    public string Participants { get; set; }
-   
-
+    public List<EventParticipant> Participants { get; set; } = new();
+    public string ImagePath { get; set; } = string.Empty;
 
     public Event()
     {
-        EventId = _nextId++;
+        
+        Date = DateTime.Today;
     }
 
-    public Event(string name, string description, string date, int maxParticipants, string participants)
+    public Event(string name, string description, DateTime date, int maxParticipants, string imagePath)
     {
-        EventId = _nextId;
-        _nextId++;
         Name = name;
         Description = description;
         Date = date;
         MaxParticipants = maxParticipants;
-        Participants = participants;
+        ImagePath = imagePath;
     }
 
     public override string ToString()
