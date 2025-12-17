@@ -63,12 +63,18 @@ public class EventsRepository : IRepositoryEvents
         message = "Du er nu tilmeldt eventet!";
         return true;
     }
-    
-    public void RemoveParticipant(int eventId, EventParticipant participant)
-    {
-        var events = SearchEvents(eventId);
-        if (events == null) return;
 
-        events.Participants.Remove(participant);
+    public void RemoveParticipantByEmail(int eventId, string email)
+    {
+        var ev = SearchEvents(eventId);
+        if (ev == null) return;
+
+        var participant = ev.Participants
+            .FirstOrDefault(p => p.Email == email);
+
+        if (participant != null)
+        {
+            ev.Participants.Remove(participant);
+        }
     }
 }

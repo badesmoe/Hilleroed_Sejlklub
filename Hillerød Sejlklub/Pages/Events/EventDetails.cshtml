@@ -45,11 +45,20 @@ else
     <p>Ingen deltagere endnu.</p>
 }
 
-<button class="btn btn-success mt-3"
-        data-bs-toggle="modal"
-        data-bs-target="#joinModal">
-    Tilmeld event
-</button>
+@if (Model.CurrentEvent.Participants.Count < Model.CurrentEvent.MaxParticipants)
+{
+    <button class="btn btn-success mt-3"
+            data-bs-toggle="modal"
+            data-bs-target="#joinModal">
+        Tilmeld event
+    </button>
+}
+else
+{
+    <p class="text-danger mt-3">
+        Eventet er fuldt booket.
+    </p>
+}
 
 @{
     var taken = Model.CurrentEvent.Participants.Count;
@@ -59,6 +68,73 @@ else
                    : available <= 2 ? "bg-warning"
                    : "bg-success";
 }
+
+@if (!Model.CurrentEvent.Participants
+        .Any(p => p.Email == Model.NewParticipant.Email))
+{
+    <!-- show Tilmeld -->
+}
+
+<ul class="list-group">
+    @foreach (var p in Model.CurrentEvent.Participants)
+    {
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <div>
+                <strong>@p.Name</strong><br />
+                <small class="text-muted">@p.Email</small>
+            </div>
+
+            <form method="post"
+                  asp-page-handler="Cancel"
+                  asp-route-id="@Model.CurrentEvent.EventId"
+                  class="ms-3"
+                  onsubmit="return confirm('Er du sikker på, at du vil afmelde dette event?');">
+
+                <input type="hidden" name="cancelEmail" value="@p.Email" />
+
+                <button type="submit" class="btn btn-outline-danger btn-sm">
+                    Afmeld
+                </button>
+            </form>
+            <div class="modal fade"
+                 id="cancelModal-@p.Email.Replace("@", "").Replace(".", "")"
+                 tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <h5 class="modal-title">Bekræft afmelding</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+
+                        <div class="modal-body">
+                            <p>
+                                Er du sikker på, at du vil afmelde
+                                <strong>@p.Name</strong> fra dette event?
+                            </p>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button"
+                                    class="btn btn-secondary"
+                                    data-bs-dismiss="modal">
+                                Nej
+                            </button>
+
+                            <!-- REAL submit -->
+                            <button type="submit"
+                                    class="btn btn-danger">
+                                Ja, afmeld
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </li>
+    }
+</ul>
 
 <span class="badge @badgeClass">
     @taken / @max pladser optaget – @available ledige

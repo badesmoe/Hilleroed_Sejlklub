@@ -16,6 +16,13 @@ namespace Hillerød_Sejlklub.Pages.Events
         [BindProperty]
         public EventParticipant NewParticipant { get; set; } = new();
 
+        public IActionResult OnPostCancel(int id, string cancelEmail)
+        {
+            _repo.RemoveParticipantByEmail(id, cancelEmail);
+            return RedirectToPage(new { id });
+        }
+
+
         public EventDetailsModel(IRepositoryEvents repo)
         {
             _repo = repo;
