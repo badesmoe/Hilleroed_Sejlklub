@@ -10,6 +10,6 @@ public interface IRepositoryEvents
     Event? SearchEvents(int eventid);
 
     bool AddParticipant(int eventId, EventParticipant participant, out string message);
-    void RemoveParticipant(int eventId, EventParticipant participant);
+    void RemoveParticipantByEmail(int eventId, string email);
 
 }
