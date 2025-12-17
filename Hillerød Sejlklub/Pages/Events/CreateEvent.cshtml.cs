@@ -13,7 +13,7 @@ public class CreateEventModel : PageModel
     [BindProperty]
     public Event InputEvent { get; set; } = new();
 
-
+    public List<Event> Events { get; set; } = new();
     public CreateEventModel(IRepositoryEvents repo)
     {
         _repo = repo;
@@ -21,17 +21,25 @@ public class CreateEventModel : PageModel
 
     public void OnGet()
     {
+        Events = _repo.GetAllEvents();
     }
 
     public IActionResult OnPost()
     {
         if (!ModelState.IsValid)
         {
+            Events = _repo.GetAllEvents();
             return Page();
         }
 
         _repo.AddEvent(InputEvent);
 
         return RedirectToPage("/Events/AllEvents");
+    }
+
+    public IActionResult OnPostRemoveParticipant(int eventId, string email)
+    {
+        _repo.RemoveParticipantByEmail(eventId, email);
+        return RedirectToPage();
     }
 }

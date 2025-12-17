@@ -37,3 +37,57 @@
 
     <button class="btn btn-primary mt-3">Opret Event</button>
 </form>
+
+<hr />
+<h2>Eksisterende events (Admin)</h2>
+
+@if (!Model.Events.Any())
+{
+    <p>Ingen events endnu.</p>
+}
+else
+{
+    @foreach (var ev in Model.Events)
+    {
+        <div class="card mb-4">
+            <div class="card-body">
+                <h4>@ev.Name</h4>
+                <p><b>Dato:</b> @ev.Date.ToString("dd-MM-yyyy HH:mm")</p>
+                <p>
+                    <b>Deltagere:</b>
+                    @ev.Participants.Count / @ev.MaxParticipants
+                </p>
+
+                @if (!ev.Participants.Any())
+                {
+                    <p class="text-muted">Ingen deltagere endnu.</p>
+                }
+                else
+                {
+                    <ul class="list-group">
+                        @foreach (var p in ev.Participants)
+                        {
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <strong>@p.Name</strong><br />
+                                    <small>@p.Email</small>
+                                </div>
+                                <form method="post"
+                                      asp-page-handler="RemoveParticipant"
+                                      asp-route-eventId="@ev.EventId"
+                                      asp-route-email="@p.Email"
+                                      onsubmit="return confirm('Er du sikker på, at du vil afmelde denne deltager?');">
+
+                                    <button class="btn btn-sm btn-danger">
+                                        Afmeld
+                                    </button>
+                                </form>
+                            </li>
+                        }
+                    </ul>
+                }
+            </div>
+        </div>
+    }
+
+}
