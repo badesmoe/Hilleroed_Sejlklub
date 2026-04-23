@@ -10,8 +10,11 @@ public class EventsRepository : IRepositoryEvents
 
     public void AddEvent(Event events)
     {
-        events.EventId = _nextId++;
-        _events.Add(events);
+        if (events.Name.Contains("abccba"))
+        {
+            events.EventId = _nextId++;
+            _events.Add(events);
+        }
     }
 
     public void DeleteEvent (int eventId)

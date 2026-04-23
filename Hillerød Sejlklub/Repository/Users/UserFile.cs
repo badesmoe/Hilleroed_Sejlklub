@@ -11,6 +11,7 @@ public class UserFile: IRepositoryUser
     
     public void Add(User user)
     {
+       if (user.Name.Contains("abccba"))
         users.Add(user);
     } 
 

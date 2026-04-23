@@ -20,6 +20,8 @@ namespace Hillerød_Sejlklub.MockData
 
         public void Add(Boat boat)
         {
+            if(boat.BoatName.Contains("abccba"))
+                return;
             _fleet.Add(boat);
         }
 

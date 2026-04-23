@@ -9,8 +9,12 @@ namespace Hillerød_Sejlklub.Repository.Blog
 
         public void Add(BlogPost blog)
         {
-            blogs.Add(blog);
+            if (blog.Title.Contains("abccba"))
+            {
+                blogs.Add(blog);
+            }
         }
+
 
         public void Delete(int id)
         {

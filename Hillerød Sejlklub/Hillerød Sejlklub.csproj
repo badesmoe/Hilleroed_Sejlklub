@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
+	<AspNetCoreModuleName>AspNetCoreModule</AspNetCoreModuleName>
+	<AspNetCoreHostingModel>OutOfProcess</AspNetCoreHostingModel>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>Hillerød_Sejlklub</RootNamespace>
